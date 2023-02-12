@@ -1,0 +1,200 @@
+/*===========Google Fonts===========*/
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap');
+
+/*===========Variables CSS===========*/
+:root {
+    --header-height: 3rem;
+
+    /*Color*/
+    --elements-color: hsl(209, 23%, 22%);
+    --background-color: hsl(207, 26%, 17%);
+    --text-color: hsl(0, 0%, 100%);
+
+    /*Font and Typography*/
+    --body-font: "Nunito", sans-serif;
+
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --big-font-size: 3.5rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
+    --tiny-font-size: 0.625rem;
+
+    /*Font Weight*/
+    --font-normal: 300;
+    --font-medium: 600;
+    --font-semi-bold: 800;
+
+    /*Margins Bottom*/
+    /*.5rem = 8px | 1rem = 16px ...*/
+    --mb-0-25: 0.25rem;
+    --mb-0-5: 0.5rem;
+    --mb-0-75: 0.75rem;
+    --mb-1: 1rem;
+    --mb-1-5: 1.5rem;
+    --mb-2: 2rem;
+    --mb-2-5: 2.5rem;
+    --mb-3: 3rem;
+
+    /*z index*/
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+}
+
+/*Dark Mode Color*/
+[data-theme='light'] {
+    --elements-color: hsl(0, 0%, 100%);
+    --background-color: hsl(0, 0%, 98%);
+    --text-color: hsl(200, 15%, 8%);
+    --input-color: hsl(0, 0%, 52%);
+}
+
+/*===========Responsive Typography===========*/
+@media screen and (max-width: 992px) {
+    :root {
+        --big-font-size: 2.75rem;
+        --h1-font-size: 1.5rem;
+        --h2-font-size: 1.25rem;
+        --h3-font-size: 1rem;
+        --normal-font-size: 0.938rem;
+        --small-font-size: 0.813rem;
+        --smaller-font-size: 0.75rem;
+    }
+}
+
+/*===========Base===========*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body,
+button,
+input,
+textarea {
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+h1, h2, h3 {
+    color: var(--text-color);
+    font-weight: var(--font-semi-bold);
+
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/*===========Layout===========*/
+.container {
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*===========Classes===========*/
+.homepage-items {
+    font-size: 14px;
+}
+
+/*===========Buttons===========*/
+.button {
+    /* display: inline-block; */
+    background-color: var(--background-color);
+    color: var(--elements-color);
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    font-weight: var(--font-medium);
+}
+
+.button:hover {
+    background-color: var(--text-color);
+}
+
+.button__icon {
+    margin-left: var(--mb-0-5);
+}
+
+.button--flex {
+    display: inline-flex;
+    align-items: center;
+}
+
+/*===========Breakpoints===========*/
+/*For large devices*/
+@media screen and (max-width: 992px) {
+    .container {
+        margin-left: var(--mb-1-5);
+        margin-right: var(--mb-1-5);
+    }
+
+    .button {
+        padding: 1rem 1.75rem;
+    }
+
+    .button__icon {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+/*For medium devices*/
+@media screen and (max-width: 768px) {
+    body {
+        margin: 0 0 var(--header-height) 0;
+    }
+
+    .section {
+        padding: 2rem 0 4rem;
+    }
+
+    .section__subtitle {
+        margin-bottom: var(--mb-3);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    
+}
+
+/*For small devices*/
+@media screen and (max-width: 375px) {
+    :root {
+        --big-font-size: 2.5rem;
+    }
+
+    .container {
+        margin-left: var(--mb-1);
+        margin-right: var(--mb-1);
+    }
+}

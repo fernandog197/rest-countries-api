@@ -1,0 +1,8 @@
+.cardgrid__container {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20%;
+    column-gap: 6.5%;
+    row-gap: 0.3%;
+    justify-content: center;
+    align-items: center;
+}

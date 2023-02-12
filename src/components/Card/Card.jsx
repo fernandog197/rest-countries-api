@@ -1,11 +1,17 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import './card.css'
 
 const Card = ({ name, population, region, capital, flag }) => {
+    const navigate = useNavigate()
     
+    const handleClick = () => {
+        navigate(`/${name}`)
+    }
+
     return (
-        <div className='card__container homepage-items'>
+        <div className='card__container homepage-items' onClick={handleClick}>
             <div className="card__flag-container">
                 <img className='card__flag' src={flag} alt="name" />
             </div>

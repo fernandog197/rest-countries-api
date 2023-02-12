@@ -5,13 +5,14 @@ import Card from '../Card/Card'
 import './cardgrid.css'
 
 const CardGrid = ({ data }) => {
-    
+
     return (
         <div className='cardgrid__container'>
             {
                 data.map((c) => (
-                    <Card 
-                        name={c.name}
+                    <Card
+                        key={c.name.common} 
+                        name={c.name.common}
                         population={c.population}
                         region={c.region}
                         capital={c.capital}

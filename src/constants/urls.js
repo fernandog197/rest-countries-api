@@ -3,7 +3,7 @@ export const baseUrl = 'https://restcountries.com/v3.1'
 export const allCountries = `${baseUrl}/all`
 
 export const searchByName = (searchName) => {
-    return `${baseUrl}/name/${searchByName}`
+    return `${baseUrl}/name/${searchName}`
 }
 
 export const searchByFullName = (searchName) => {

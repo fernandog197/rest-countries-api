@@ -6,3 +6,19 @@
     justify-content: center;
     align-items: center;
 }
+
+/*===========Breakpoints===========*/
+/*For large devices*/
+@media screen and (max-width: 992px) {
+    .cardgrid__container {
+        grid-template-columns: 1fr 1fr;
+        row-gap: .1%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .cardgrid__container {
+        grid-template-columns: 1fr;
+        row-gap: .05%;
+    }
+}

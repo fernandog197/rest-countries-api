@@ -30,6 +30,10 @@ const Detail = () => {
         }, 250);
     }, [getNewCountry])
 
+    useEffect(() => {
+        scroll(0, 0)
+    }, [])
+
     const handleClick = () => {
         navigate('/')
     }

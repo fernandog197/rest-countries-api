@@ -22,3 +22,19 @@
 .navbar__darkmode-text:hover {
     cursor: pointer;
 }
+
+/*===========Breakpoints===========*/
+
+@media screen and (max-width: 576px) {
+    .navbar__title h3 {
+        font-size: var(--normal-font-size);
+    }
+
+    .navbar__darkmode-text {
+        font-size: var(--smaller-font-size);
+    }
+
+    .navbar__icon {
+        font-size: 1rem;
+    }
+}

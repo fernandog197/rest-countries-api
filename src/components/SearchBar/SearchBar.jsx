@@ -1,14 +1,15 @@
 import { useState } from 'react'
-import axios from 'axios'
 
 import { fetchByName, fetchByRegion, fetchAllCountries } from '../../services/fetchs'
 
+import { AiOutlineCloseCircle } from 'react-icons/ai' 
 import { BsSearch } from 'react-icons/bs'
 
 import './searchbar.css'
 
 const SearchBar = ({ setRenderCountries }) => {
     const [country, setCountry] = useState('')
+    const [search, setSearch] = useState(false)
 
     const handleSelect = async (e) => {
         console.log(e.target.value)
@@ -30,15 +31,32 @@ const SearchBar = ({ setRenderCountries }) => {
         e.preventDefault()
         let data = await fetchByName(country)
         setRenderCountries(data)
+        setSearch(true)
+    }
+
+    const handleClose = async () => {
+        if(search) {
+            setSearch(false)
+            let data = await fetchAllCountries()
+            setRenderCountries(data)
+        }
         setCountry('')
     }
 
     return (
         <div className='searchbar__container'>
-            <form onSubmit={handleSubmit} className="searchbar__input">
-                <input type="text" name='country' value={country} className='searchbar__input-input' placeholder='Search for a country...' onChange={handleChange} />
-                <button type='submit' className='searchbar__button'>{<BsSearch className='searchbar__button-icon' />}</button>
-            </form>
+            <div className='searchbar__form-container'>
+                <form onSubmit={handleSubmit} className="searchbar__input">
+                    <input type="text" name='country' value={country} className='searchbar__input-input' placeholder='Search for a country...' onChange={handleChange} />
+                    <button type='submit' className='searchbar__button'>{<BsSearch className='searchbar__button-icon' />}</button>
+                </form>
+
+                {
+                    country !== ''
+                    ? <AiOutlineCloseCircle className='detail__close' onClick={handleClose} />
+                    : <div></div>
+                }
+            </div>
             <select name="region" className='searchbar__region' onChange={handleSelect}>
                 <option hidden disabled selected value>Filter By Region</option>
                 <option value="all">All Regions</option>

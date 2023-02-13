@@ -6,6 +6,14 @@
     align-items: center;
 }
 
+.searchbar__form-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
+}
+
 .searchbar__input {
     display: flex;
     flex-direction: row-reverse;
@@ -16,6 +24,16 @@
     width: 400px;
     height: 3.5rem;
     box-shadow: 0px 5px 5px -5px rgba(0,0,0,0.75);
+}
+
+.detail__close {
+    font-size: 1.5rem;
+    opacity: 80%;
+}
+
+.detail__close:hover {
+    cursor: pointer;
+    opacity: 100%;
 }
 
 .searchbar__input-input {

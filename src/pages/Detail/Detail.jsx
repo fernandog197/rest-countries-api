@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 
 import { fetchByFullName } from '../../services/fetchs'
+
+import { useBorderCountries } from '../../hooks/useBorderCountries'
+
+import Spinner from '../../components/Spinner/Spinner'
 
 import { AiOutlineArrowLeft } from 'react-icons/ai'
 
@@ -10,7 +13,9 @@ import './detail.css'
 
 const Detail = () => {
     const [detail, setDetail] = useState({})
-    const [borderCountries, setBorderCountries] = useState([])
+    const [borderCountries, fetchBorderCountries] = useBorderCountries(detail)
+    const [getNewCountry, setGetNewCountry] = useState(false)
+
     const { name } = useParams()
     const navigate = useNavigate()
     
@@ -18,16 +23,22 @@ const Detail = () => {
         const getDetail = async () => {
             let data = await fetchByFullName(name)
             setDetail(data)
+            fetchBorderCountries(data)
         }
         setTimeout(() => {
             getDetail()
         }, 250);
-    }, [])
+    }, [getNewCountry])
 
     const handleClick = () => {
         navigate('/')
     }
 
+    const handleNavigate = (e) => {
+        navigate(`/${e.target.innerHTML}`)
+        setGetNewCountry(!getNewCountry)
+    }
+    
     return (
         Object.keys(detail).length > 0
         ? (
@@ -93,13 +104,30 @@ const Detail = () => {
                                     </div>
                                 </div>
                             </div>
-                            <strong>Border Countries:</strong>
+                            <div className="detail__bordercountries-container">
+                                <strong>Border Countries:</strong>
+                                <div className="detail__bordercountries">
+                                    {
+                                        borderCountries
+                                        ? borderCountries.map(b => (
+                                            <p className='detail__bordercountry' onClick={handleNavigate}>{b}</p>
+                                        ))
+                                        : <Spinner />
+                                    }
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             ))
         )
-        :   <div>Cargando...</div>
+        :   (
+            <div className="detail__spinner">
+                <div className="detail__spinner-son">
+                    <Spinner />
+                </div>
+            </div>
+        )
     )
 }
 
